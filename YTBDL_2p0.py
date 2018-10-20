@@ -3,18 +3,22 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk 
 from tkinter import messagebox
-#from PIL import Image
+#from PIL import Image, ImageTk #png用的
 
 root=tk.Tk()
 root.resizable(0,0)
+#root.geometry('605x900') #png用的
 root.geometry('540x55')
 root.title("YTBDL v2.0 By Rick20181020")
-#bm = PhotoImage(file = 'Mario2.png')
+#root.configure(background='black') #改視窗底色
+
+#加圖片png
+#bm = PhotoImage(file = 'cos.png')
 #BACKG = Label(root, image = bm)
 
 #文字Label
-l1 = ttk.Label(text="Step.1 Add Address Here", width=25)
-l2 = ttk.Label(text="Step.2 Choose Format", width=25)
+step1 = ttk.Label(text="Step.1 Add Address Here", width=25)
+step2 = ttk.Label(text="Step.2 Choose Format", width=25)
 
 #取得當前目錄路徑
 Tpath = os.getcwd()
@@ -52,32 +56,38 @@ def click4k():
 def fend(ftype): #結束用
 	if ftype == 0:
 		os.system("move *.mp3 ./Output/MP3")
-		messagebox.showinfo("Mission Completed", "The MP3 file is in Output\MP3 folder")
+		messagebox.showinfo("Mission Completed", "The MP3 file is in Output - MP3 folder")
 	elif ftype == 1:
 		os.system("move *.mp4 ./Output/720P")
-		messagebox.showinfo("Mission Completed", "The MP4 file is in Output\720P folder")
+		messagebox.showinfo("Mission Completed", "The MP4 file is in Output - 720P folder")
 	elif ftype == 2:
 		os.system("move *.mp4 ./Output/1080P")
-		messagebox.showinfo("Mission Completed", "The MP4 file is in Output\1080P folder")
+		messagebox.showinfo("Mission Completed", "The MP4 file is in Output - 1080P folder")
 	else:
 		os.system("move *.webm ./Output/4K")	
-		messagebox.showinfo("Mission Completed", "The 4K WEBM file is in Output\4K folder")
+		messagebox.showinfo("Mission Completed", "The 4K WEBM file is in Output - 4K folder")
 		
+						
 #定義各按鈕文字及呼叫程式
 button1=ttk.Button(root, text="720P", command=click720)
 button2=ttk.Button(root, text="1080P", command=click1080)
 button3=ttk.Button(root, text="4K", command=click4k)
 button4=ttk.Button(root, text="MP3", command=clickMP3)
+#button5=ttk.Button(root, text="TEST", command=testRick)
 
 #定義各區塊放置位置
-l1.grid(column=1,row=0)
-l2.grid(column=1,row=1)
+step1.grid(column=1,row=0)
+step2.grid(column=1,row=1)
 e.grid(column=2,row=0, columnspan=4, sticky=W+E)#w+e為左右延展
 #e.grid_columnconfigure(2, weight=1)
 button1.grid(column=2,row=1)
 button2.grid(column=3,row=1)
 button3.grid(column=4,row=1)
 button4.grid(column=5,row=1)
-#BACKG.grid(columnspan=5)
+#button5.grid(row=2)
+
+#加圖片png
+#BACKG.grid(column=0,row=2, columnspan=6)
+
 
 root.mainloop()
