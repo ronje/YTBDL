@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk 
 from tkinter import messagebox
-from PIL import Image
+#from PIL import Image
 
 root=tk.Tk()
 root.resizable(0,0)
@@ -12,10 +12,17 @@ root.title("YTBDL v2.0 By Rick20181020")
 #bm = PhotoImage(file = 'Mario2.png')
 #BACKG = Label(root, image = bm)
 
+#文字Label
 l1 = ttk.Label(text="Step.1 Add Address Here", width=25)
 l2 = ttk.Label(text="Step.2 Choose Format", width=25)
+
+#取得當前目錄路徑
 Tpath = os.getcwd()
+
+#產生輸入資料用的Entry
 e = tk.Entry(root, show=None)
+
+#第一次執行沒有OUTPUT資料夾時，建立所有輸出用資料夾
 path = ".\Output"
 if not os.path.isdir(path):
 	os.mkdir(path)
@@ -30,7 +37,6 @@ def clickMP3():
 	print( Tpath+"\\bin\youtube-dl.exe")
 	os.system(Tpath+"\\bin\youtube-dl.exe --extract-audio --audio-format mp3 "+var)
 	fend(0)
-	
 def click720():
 	var = e.get()
 	os.system(Tpath+"\\bin\youtube-dl.exe -f 136+140 "+var)
@@ -43,7 +49,6 @@ def click4k():
 	var = e.get()
 	os.system(Tpath+"\\bin\youtube-dl.exe -f 313+251 "+var)
 	fend(3)
-
 def fend(ftype): #結束用
 	if ftype == 0:
 		os.system("move *.mp3 ./Output/MP3")
@@ -58,15 +63,16 @@ def fend(ftype): #結束用
 		os.system("move *.webm ./Output/4K")	
 		messagebox.showinfo("Mission Completed", "The 4K WEBM file is in Output\4K folder")
 		
-
+#定義各按鈕文字及呼叫程式
 button1=ttk.Button(root, text="720P", command=click720)
 button2=ttk.Button(root, text="1080P", command=click1080)
 button3=ttk.Button(root, text="4K", command=click4k)
 button4=ttk.Button(root, text="MP3", command=clickMP3)
 
+#定義各區塊放置位置
 l1.grid(column=1,row=0)
 l2.grid(column=1,row=1)
-e.grid(column=2,row=0, columnspan=4, sticky=W+E)
+e.grid(column=2,row=0, columnspan=4, sticky=W+E)#w+e為左右延展
 #e.grid_columnconfigure(2, weight=1)
 button1.grid(column=2,row=1)
 button2.grid(column=3,row=1)
