@@ -7,14 +7,10 @@ from tkinter import messagebox
 
 root=tk.Tk()
 root.resizable(0,0)
-#root.geometry('605x900') #png用的
 root.geometry('540x55')
-root.title("YTBDL v2.0 By Rick20181020")
+root.title("YTBDL v2.1 By Rick20191119")
 #root.configure(background='black') #改視窗底色
 
-#加圖片png
-#bm = PhotoImage(file = 'cos.png')
-#BACKG = Label(root, image = bm)
 
 #文字Label
 step1 = ttk.Label(text="Step.1 Add Address Here", width=25)
@@ -73,7 +69,6 @@ button1=ttk.Button(root, text="720P", command=click720)
 button2=ttk.Button(root, text="1080P", command=click1080)
 button3=ttk.Button(root, text="4K", command=click4k)
 button4=ttk.Button(root, text="MP3", command=clickMP3)
-#button5=ttk.Button(root, text="TEST", command=testRick)
 
 #定義各區塊放置位置
 step1.grid(column=1,row=0)
@@ -84,10 +79,6 @@ button1.grid(column=2,row=1)
 button2.grid(column=3,row=1)
 button3.grid(column=4,row=1)
 button4.grid(column=5,row=1)
-#button5.grid(row=2)
-
-#加圖片png
-#BACKG.grid(column=0,row=2, columnspan=6)
 
 
 root.mainloop()
